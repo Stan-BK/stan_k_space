@@ -29,6 +29,16 @@ export default {
       routes,
     };
   },
+  created() {
+    var games = this.routes.filter((item) => {
+      if (item.name == "game") {
+        return true;
+      }
+    });
+    if (games) {
+      location.href = "#" + games[0].child[0];
+    }
+  },
   methods: {
     changeGame(game) {
       location.href = "#" + game;
@@ -69,6 +79,7 @@ ul li {
   display: none;
   background-color: rgb(214, 146, 156);
   transition: background-color 0.5s;
+  cursor: pointer;
 }
 .hd-item:hover .hd-item-child {
   display: block;
